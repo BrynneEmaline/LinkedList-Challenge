@@ -48,9 +48,10 @@ public class Menu {
                 case "L", "l" -> itinerary.list();
                 case "A", "a" -> {
                     int distance;
+                    String name;
 
                     System.out.println("Enter the name of the town: ");
-                         String name = scanner.nextLine();
+                         name = scanner.nextLine();
                     System.out.println("Enter the distance of the town from Sydney: ");
                      try {
                         distance = scanner.nextInt();
