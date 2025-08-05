@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -34,7 +35,11 @@ public class Menu {
                 case "B", "b" -> {
                     String choice;
                     do {
-                        System.out.println(itinerary.backward());
+                        String backward = itinerary.backward();
+                        System.out.println(backward);
+                        if (backward.equalsIgnoreCase("Front of list reached.\n")) {
+                            break;
+                        }
                         System.out.println("See the previous town? Y/N ");
                         choice = scanner.nextLine();
                     } while (choice.equalsIgnoreCase("Y"));
@@ -42,10 +47,21 @@ public class Menu {
                 }
                 case "L", "l" -> itinerary.list();
                 case "A", "a" -> {
+                    int distance;
+
                     System.out.println("Enter the name of the town: ");
-                    String name = scanner.nextLine();
+                         String name = scanner.nextLine();
                     System.out.println("Enter the distance of the town from Sydney: ");
-                    int distance = scanner.nextInt();
+                     try {
+                        distance = scanner.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Invalid distance.");
+                        scanner.nextLine();
+                        System.out.println("Enter the distance of the town from Sydney: ");
+                        distance = scanner.nextInt();
+                        scanner.nextLine();
+                        break;
+                    }
                     scanner.nextLine();
                     System.out.println(itinerary.addTown(name, distance));
                 }

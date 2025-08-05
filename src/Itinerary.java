@@ -12,12 +12,6 @@ public class Itinerary {
         Town sydney = new Town("Sydney", 0);
         towns.add(sydney);
 
-        Town test1 = new Town("test1", 1);
-        towns.add(test1);
-
-        Town test2 = new Town("test2", 2);
-        towns.add(test2);
-
         iterator = towns.listIterator();
     }
 
@@ -58,7 +52,7 @@ public class Itinerary {
             Town town = iterator.previous();
             return "Town name: " + town.getName() + "\nDistance from start: " + town.getDistance();
         } else {
-            return "Front of list reached.";
+            return "Front of list reached.\n";
         }
     }
 
